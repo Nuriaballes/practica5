@@ -70,49 +70,68 @@ vector3 <- c(21, 45, 33, 98, 34, 90, 67, 87, 45, 11, 73, 38, 28, 15, 50, 57, 12,
        
 
  #El coeficiente de variación es una medida de dispersión relativa que se utiliza para comparar la variabilidad de dos conjuntos de datos con diferentes unidades de medida. Se calcula como la desviación estándar dividida por la media y se expresa como un porcentaje. Aquí Galo, te muestro cómo calcular el coeficiente de variación de los objetos 'numArtefactos_int' y 'vector3'(jajaja):
-                # Para numArtefactos_int
-                cv_numArtefactos <- 100 * sd(numArtefactos_int) / mean(numArtefactos_int)
-                cv_numArtefactos
-                # Resultado: 66.84602
-                
-                # Para vector3
-                cv_vector3 <- 100 * sd(vector3) / mean(vector3)
-                cv_vector3
-                # Resultado: 63.59067
-          #Esto significa que el conjunto de datos 'numArtefactos_int' tiene una variabilidad relativa más alta que 'vector3'.
-
+          # Para numArtefactos_int
+          cv_numArtefactos <- 100 * sd(numArtefactos_int) / mean(numArtefactos_int)
+          cv_numArtefactos
+          # Resultado: 66.84602
+          
+          # Para vector3
+          cv_vector3 <- 100 * sd(vector3) / mean(vector3)
+          cv_vector3
+          # Resultado: 63.59067
+    #Esto significa que el conjunto de datos 'numArtefactos_int' tiene una variabilidad relativa más alta que 'vector3'.
                 
 #Ej.15.Genera una tabla-resumen de los estadísticos descriptivos expuestos: media,mediana, desviación estándar etc.
                 
     #Para generar una tabla-resumen de los estadísticos descriptivos de los objetos 'numArtefactos_int' y 'vector3', podemos utilizar la función summary(). Esta función proporciona un resumen estadístico para un conjunto de datos, incluyendo la media, la mediana, el rango, la desviación estándar y los cuartiles.
-                # Para numArtefactos_int
-                summary(numArtefactos_int)
-                # Resultado:
-                #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-                #   4.00   21.50   40.50   45.55   61.50  102.00 
-                
-                # Para vector3
-                summary(vector3)
-                # Resultado:
-                #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-                #   1.00  26.25  41.50  46.05  68.50  98.000
-               
+        # Para numArtefactos_int
+        summary(numArtefactos_int)
+        # Resultado:
+        #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        #   4.00   21.50   40.50   45.55   61.50  102.00 
+        
+        # Para vector3
+        summary(vector3)
+        # Resultado:
+        #    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+        #   1.00  26.25  41.50  46.05  68.50  98.000
+       
 #16.Calcula el coeficiente de asimetría del objeto ‘vector3’. Interpreta su resultado. Exponga ejemplos de distribuciones de variables con asimetría positiva y negativa y simétricas. Explique cada uno de estos escenarios.
- #Podemos calcular el coeficiente de asimetría del objeto 'vector3' utilizando la función skewness() :
-                  
-                library(e1071)
-                skewness(vector3)
-                # Resultado: [1] 0.3138528
-                # El coeficiente de asimetría para 'vector3' es de 0.3138528. Un coeficiente de asimetría negativo indica que la distribución es ligeramente asimétrica hacia la izquierda, lo que significa que la cola de la distribución se extiende hacia la izquierda. En otras palabras, la mayoría de los valores se concentran en la parte derecha de la distribución y hay algunos valores bajos (a la izquierda) que se alejan de la mayoría de los valores. En este caso, la distribución parece ser aproximadamente simétrica pero ligeramente sesgada hacia la izquierda.        
-
-
+ #Podemos calcular el coeficiente de asimetría del objeto 'vector3' utilizando la función skewness() y antes intalandonos el paquete e1071 :
+        install.packages("e1071")
+        library(e1071)
+      skewness(vector3)
+      # Resultado: [1] 0.3138528
+      # Indica una ligera asimetría positiva en los datos. Esto significa que la cola derecha de la distribución es más larga que la cola izquierda.        
+#Las distribuciones de variables pueden clasificarse en tres tipos según su asimetría:
+      
+      #Asimetría positiva: En una distribución con asimetría positiva, la cola derecha de la distribución es más larga y pesada que la cola izquierda. Esto significa que la mayoría de las observaciones se agrupan en la parte izquierda de la distribución y hay algunas observaciones extremas en la parte derecha. Ejemplos:
+         # -Ingresos de las personas (la mayoría de las personas ganan salarios bajos o medios, pero hay algunas personas extremadamente ricas).
+         # -Duración de las llamadas (también, la mayoría de las llamadas son cortas, pero hay algunas llamadas muy largas).
+         # -Tiempo de espera en una cola (la mayoría de las personas esperan poco tiempo, pero hay algunas personas que esperan mucho tiempo).
+     # Asimetría negativa: En una distribución con asimetría negativa, la cola izquierda de la distribución es más larga y pesada que la cola derecha. Esto significa que la mayoría de las observaciones se agrupan en la parte derecha de la distribución y hay algunas observaciones extremas en la parte izquierda. Ejemplos:
+          # - Edad de los hijos que viven en la casa familiar (la mayoría de los hijos son jóvenes, pero hay algunos hijos mayores).
+          # - Velocidad de los coches en una carretera (la mayoría de los coches conducen a una velocidad normal, pero hay algunos coches que conducen muy lento).
+          # - Tiempo que tardan los estudiantes en completar un examen (la mayoría de nosotros los completamos en el tiempo asignado, pero hay algunos que tardan mucho ).
+      #imétrica: En una distribución simétrica, las dos colas de la distribución tienen la misma longitud y peso. Esto significa que la mayoría de las observaciones se agrupan en el centro de la distribución y hay aproximadamente la misma cantidad de observaciones en cada cola. Ejemplos:
+          # -Altura de las personas (la mayoría de las personas tienen una altura promedio, y hay una cantidad igual de personas más altas y más bajas).
+          # -Peso de los objetos (la mayoría de los objetos tienen un peso promedio, y hay una cantidad igual de objetos más pesados y más ligeros).
+      
+      
 #17.Calcula la curtosis del objeto ‘vector3’. ¿Qué tipo de curtosis se encuentra asociada al anterior objeto? Justifica tu respuesta. 
 
-
-
-
-
-
+      # Instalar y cargar el paquete 'moments'
+      install.packages("moments")
+      library(moments)
+      
+      # Calcular la curtosis de 'vector3'
+      kurtosis(vector3)
+      #[1] 1.952376
+      
+   # El valor de curtosis que hemos tenido para el objeto 'vector3' indica que se trata de una distribución mesocúrtica, es decir, su kurtosis es similar a la de una distribución normal. Esto significa que la distribución de los datos se concentra en torno a la media y no presenta valores extremos en comparación con una distribución normal.
+      
+      
+      
 
 
 
